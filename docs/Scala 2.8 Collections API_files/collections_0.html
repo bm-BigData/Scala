@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0071)http://www.scala-lang.org/docu/files/collections-api/collections_0.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- XML file produced from file: collections.tex
+     using Hyperlatex v 2.7 (c) Otfried Cheong
+     on Emacs 22.1.1, Tue Sep  7 16:55:26 2010 --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Scala 2.8 Collections API</title>
+
+<style type="text/css">
+.maketitle { align : center }
+div.abstract { margin-left: 20%; margin-right: 10%; }
+h3.abstract  { align : center }
+div.verse, div.quote, div.quotation {
+  margin-left : 10%; 
+  margin-right : 10%;
+}
+</style>
+
+
+</head>
+<body marginwidth="20" marginheight="20">
+
+
+  
+    <h1 class="maketitle">The Scala 2.8 Collections API</h1>
+    <h2 class="maketitle">Martin Odersky, Lex Spoon</h2>
+    <h3 class="maketitle">September 7, 2010</h3>
+    <p>In the eyes of many, the new collections framework is the most significant
+change in Scala 2.8. Scala had collections before (and in fact the new
+framework is largely compatible with them). But it's only 2.8 that
+provides a common, uniform, and all-encompassing framework for
+collection types.
+</p><p>Even though the additions to collections are subtle at first glance,
+the changes they can provoke in your programming style can be
+profound.  In fact, quite often it's as if you work on a higher-level
+with the basic building blocks of a program being whole collections
+instead of their elements. This new style of programming requires some
+adaptation. Fortunately, the adaptation is helped by several nice
+properties of the new Scala collections. They are easy to use,
+concise, safe, fast, universal.
+</p><p><b>Easy to use: </b> <br> <br>A small vocabulary of 20-50 methods is
+enough to solve most collection problems in a couple of operations. No
+need to wrap your head around complicated looping structures or
+recursions. Persistent collections and side-effect-free operations mean
+that you need not worry about accidentally corrupting existing
+collections with new data.  Interference between iterators and
+collection updates is eliminated.
+</p><p><b>Concise:</b> <br> <br>You can achieve with a single word what used to
+take one or several loops. You can express functional operations with
+lightweight syntax and combine operations effortlessly, so that the result
+feels like a custom algebra.  
+</p><p><b>Safe:</b> <br> <br>This one has to be experienced to sink in. The
+statically typed and functional nature of Scala's collections means
+that the overwhelming majority of errors you might make are caught at
+compile-time. The reason is that (1) the collection operations
+themselves are heavily used and therefore well
+tested. (2) the usages of the collection operation make inputs and
+output explicit as function parameters and results. (3) These explicit
+inputs and outputs are subject to static type checking. The bottom line
+is that the large majority of misuses will manifest themselves as type
+errors. It's not at all uncommon to have programs of several hundred
+lines run at first try.
+</p><p><b>Fast:</b> <br> <br>Collection operations are tuned and optimized in the
+libraries. As a result, using collections is typically quite
+efficient. You might be able to do a little bit better with carefully
+hand-tuned data structures and operations, but you might also do a lot
+worse by making some suboptimal implementation decisions along the
+way.  What's more, collections are currently being adapted to parallel
+execution on multi-cores. Parallel collections support the same
+operations as sequential ones, so no new operations need to be learned
+and no code needs to be rewritten. You can turn a sequential collection into a
+parallel one simply by invoking the <tt>par</tt> method.
+</p><p><b>Universal: </b> <br> <br>Collections provide the same operations on
+any type where it makes sense to do so. So you can achieve a lot with
+a fairly small vocabulary of operations. For instance, a string is
+conceptually a sequence of characters. Consequently, in Scala
+collections, strings support all sequence operations. The same holds
+for arrays.
+</p><p><b>Example:</b> <br> <br>Here's one line of code that demonstrates many of the 
+advantages of Scala's collections.
+</p><div class="quote"><p><tt></tt></p><table cellspacing="1" cellpadding="0"><tbody><tr>
+<td nowrap="" colspan="99" align="left"><font color="#0000e5">val</font>&nbsp;(minors,&nbsp;adults)&nbsp;=&nbsp;people&nbsp;partition&nbsp;(_.age&nbsp;&lt;&nbsp;<font color="#000000">18</font>)
+</td></tr></tbody></table><tt>
+</tt><p></p></div>It's immediately clear what this operation does: It partitions a
+collection of <tt>people</tt> into <tt>minors</tt> and <tt>adults</tt> depending on
+their age. Because the <tt>partition</tt> method is defined in the root
+collection type <tt>TraversableLike</tt>, this code works for any kind of
+collection, including arrays. The resulting <tt>minors</tt> and <tt>adults</tt>
+collections will be of the same type as the <tt>people</tt> collection.
+<p>This code is much more concise than the one to three loops required for
+traditional collection processing (three loops for an array, because
+the intermediate results need to be buffered somewhere else).  Once
+you have learned the basic collection vocabulary you will also find
+writing this code is much easier and safer than writing explicit
+loops. Furthermore, the <tt>partition</tt> operation is quite fast, and will
+get even faster on parallel collections on multi-cores.  (Parallel
+collections are in the current development builds and will be released
+as part of Scala 2.9.)
+</p><p>These pages describe in depth the APIs of the
+Scala 2.8 collection classes from a user perspective.  They take you on
+a tour of all the fundamental classes and the methods they define.
+</p><p>Next:
+</p><ul>
+<li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_1.html">Mutable and Immutable Collections</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_2.html">An Overview of the Collections API</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_3.html">Trait <tt>Traversable</tt></a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_4.html">Trait <tt>Iterable</tt></a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_5.html">The sequence traits <tt>Seq</tt>, <tt>IndexedSeq</tt>, and <tt>LinearSeq</tt></a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_7.html">Sets</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_10.html">Maps</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_12.html">Concrete Immutable Collection Classes</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_23.html">Concrete Mutable Collection Classes</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_38.html">Arrays</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_39.html">Strings</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_40.html">Performance Characteristics</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_41.html">Equality</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_42.html">Views</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_43.html">Iterators</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_45.html">Creating collections from scratch</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_46.html">Conversions between Java and Scala collections</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_47.html">Migrating from Scala 2.7</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_48.html">Acknowledgements</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_49.html">Contents</a>
+</li><li><a href="http://www.scala-lang.org/docu/files/collections-api/collections_50.html">Footnotes</a>
+</li><li><a href="collections_toc.html">Navigation</a>
+</li></ul>
+<hr>
+
+</body></html>
