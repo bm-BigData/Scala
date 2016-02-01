@@ -8,6 +8,7 @@ Learn Scala
   2. https://sites.google.com/site/continuelearning/Home/introduction-to-spark-with-scala/introduction-to-scala
 3. <b>Scala Environment Setup</b> - http://www.dhgarrette.com/nlpclass/scala/setup.html :+1:
 4. http://docs.scala-lang.org/tutorials/tour/anonymous-function-syntax.html
+5. https://bcomposes.wordpress.com/2011/08/22/first-steps-in-scala-for-first-time-programmers-part-1/
 
 ## Environment Setup
 1. http://www.dhgarrette.com/nlpclass/scala/setup.html :+1:
