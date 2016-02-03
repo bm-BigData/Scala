@@ -16,3 +16,9 @@ Learn Scala
 
 > Its easir to use **Spark notebook** for learning Scala as its easy to install, run & test code.
 
+##Learnings
+1. https://www.usenix.org/conference/nsdi12/technical-sessions/presentation/zaharia
+2. https://www.linkedin.com/pulse/develop-apache-spark-apps-intellij-idea-windows-os-samuel-yee?trk=mp-reader-card
+3. http://www.slideshare.net/MammothData/intro-to-apache-spark-54999973?qid=7f66699c-d896-4a08-9638-a4d903e7a841&v=default&b=&from_search=3
+4. 
+
